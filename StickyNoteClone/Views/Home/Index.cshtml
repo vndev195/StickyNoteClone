@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Note>
+
+<div class="container mt-3 mb-3">
+    @foreach (var note in Model)
+    {
+        <partial name="NoteSummary" model="note" />
+    }
+</div>
+
+

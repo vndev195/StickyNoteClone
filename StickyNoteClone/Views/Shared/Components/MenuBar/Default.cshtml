@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Note>
+@{
+
+    int count = 0;
+    string pholder = "card-body collapse show";
+}
+
+<div id="accordion" class="">
+    @foreach (var note in Model ?? Enumerable.Empty<Note>())
+    {
+
+        var collapse = "collapse";
+        count++;
+        collapse += count;
+        if (count > 1)
+        {
+            pholder = "card-body collapse";
+        }
+        <div class="card mt-3" style="box-shadow:3px 3px 3px @note.Color; border-top:solid @note.Color 10px">
+            @* <div class="d-flex">
+                <a class="btn flex-grow-1" data-bs-toggle="collapse" href="#@collapse">
+                @note.Title
+                </a>
+                <span class="float-end">
+                <a href="#" class="btn" data-bs-toggle="popover" tabindex="0" title="Popover title" data-bs-content="Default popover">
+                <i class="fa-solid fa-ellipsis"></i>
+                </a>
+                </span>
+                </div>*@
+
+            <div class="card-title btn-group">
+                <a class="btn" data-bs-toggle="collapse" href="#@collapse">
+                    @note.Title
+                </a>
+                <div class="">
+                    <a class="btn" data-toggle="tooltip" data-placement="top" title="Tooltip on top" asp-route-id="@note.Id" asp-controller="Home" asp-action="Index">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+                @*  <span class="float-end">
+                    <a href="#" class="btn" data-bs-toggle="popover" tabindex="0" title="Popover title" data-bs-content="Default popover">
+                    <i class="fa-solid fa-ellipsis"></i>
+                    </a>
+                    </span>*@
+            </div>
+
+            <div id="@collapse" class="@pholder" style="border-color:@note.Color" data-bs-parent="#accordion">
+                @note.Content
+            </div>
+        </div>
+        @*<i class="fa-solid fa-ellipsis"></i>*@
+    }
+</div>

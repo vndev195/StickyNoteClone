@@ -1,0 +1,13 @@
+﻿@model Note
+@*Partial View*@
+<div class="card mt-3">
+    <div class="" style="background-color:@Model.Color">
+        <h6 class="card-title m-2">
+            @Model.Title
+            <button class="btn">
+                <i class="fa-solid fa-ellipsis"></i>
+            </button>
+        </h6>
+    </div>
+    <p class="card-body">@Model.Content</p>
+</div>
