@@ -5,7 +5,7 @@ using StickyNoteClone.Models.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-//builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 //AddControllersWithViews - sets up the shared objects required by applications using MVC framework and the razor view engine
 builder.Services.AddControllersWithViews();
 

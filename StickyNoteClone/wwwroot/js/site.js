@@ -15,4 +15,29 @@ $(document).ready(function () {
 
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
-})
+});
+
+function newNote() {
+    var tt = document.getElementById("total");
+    var rowCount = parseInt(tt.value);
+    rowCount++;
+    tt.value = rowCount;
+    var html = '';
+    html += '<div id="inputRow">';
+    html += '<input type="text" name="[' + (rowCount - 1) + '].Name"  />';
+    html += '</div>';
+
+    $('#newRow').append(html);
+}
+
+function openNav(btn) {
+    btn.blur();
+    var elm = btn.closest(".card");
+    elm.children[0].style.height = "100%";
+    elm.fucos();
+}
+
+function closeNav(nav) {
+    nav.closest(".card").children[0].style.height = "0";
+}
+

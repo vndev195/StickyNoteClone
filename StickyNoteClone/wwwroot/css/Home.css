@@ -1,8 +1,21 @@
-﻿#titleDiv:hover{
-    width:50%;
+﻿#titleDiv:hover {
+    width: 50%;
 }
 
 .share {
     float: left;
     position: relative;
 }
+
+.overlay {
+    position: absolute;
+    opacity: 90%;
+    width: 100%;
+    z-index: 1;
+    height: 0;
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+    color: white;
+}
+

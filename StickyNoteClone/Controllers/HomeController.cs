@@ -2,30 +2,47 @@
 using StickyNoteClone.Models;
 using System.Diagnostics;
 using StickyNoteClone.Models.Repositories;
+using AutoMapper;
+using StickyNoteClone.Models.DTO;
 namespace StickyNoteClone.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private INoteRepository repo;
-        public HomeController(ILogger<HomeController> logger, INoteRepository noteRepository)
+        private IMapper _mapper;
+        public HomeController(ILogger<HomeController> logger, INoteRepository noteRepository, IMapper mapper)
         {
             _logger = logger;
             repo = noteRepository;
+            _mapper = mapper;
         }
 
         public IActionResult Index()
         {
-            var data = RouteData?.Values["id"];
-            Note note = repo.GetById(Convert.ToInt32(data));
-            if (note != null)
-            {
-                note.IsDisplayed = true;
-                repo.UpdateNote(note);
-            }
-            return View(repo.GetDisplayedNotes());
+            ViewData["Notes"] = repo.Notes();
+            ViewData["DisplayedNotes"] = repo.GetDisplayedNotes();
+            return View();
         }
 
+        [HttpPost]
+        public IActionResult Index(NoteViewModel model)
+        {
+            Note note = _mapper.Map<Note>(model);
+            Note findNote = repo.GetById(note.Id);
+            if (findNote != null)
+            {
+                findNote.Title = note.Title;
+                findNote.Content = note.Content;
+
+                repo.UpdateNote(findNote);
+            }
+            return RedirectToAction();
+        }
+        // public IActionResult AddNewNote()
+        // {
+
+        // }
         public IActionResult Privacy()
         {
             return View();

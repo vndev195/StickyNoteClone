@@ -1,20 +1,26 @@
-﻿namespace StickyNoteClone.Models.Repositories
+﻿using AutoMapper;
+using StickyNoteClone.Models.DTO;
+namespace StickyNoteClone.Models.Repositories
 {
     public class NoteRepository : INoteRepository
     {
         StickyNoteDbContext _context;
-        public NoteRepository(StickyNoteDbContext context)
+        private readonly IMapper _mapper;
+        public NoteRepository(StickyNoteDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
-        public IEnumerable<Note> Notes()
+        public IEnumerable<NoteViewModel> Notes()
         {
-            return _context.Notes;
+
+            return _mapper.Map<IEnumerable<NoteViewModel>>(_context.Notes);
         }
 
-        public IEnumerable<Note> GetDisplayedNotes()
+        public IEnumerable<NoteViewModel> GetDisplayedNotes()
         {
-            return _context.Notes.Where(x => x.IsDisplayed == true);
+            return _mapper.Map<IEnumerable<NoteViewModel>>(_context.Notes.Where(x => x.IsDisplayed == true));
+            //return _context.Notes.Where(x => x.IsDisplayed == true);
         }
 
         public void UpdateNote(Note note)

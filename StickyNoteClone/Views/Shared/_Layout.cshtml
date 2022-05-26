@@ -32,8 +32,8 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <div class="row m-1">
+    <div class="">
+        @*<div class="row m-1">
             <div class="col-4 card">
                 @await Component.InvokeAsync("MenuBar")
             </div>
@@ -41,7 +41,8 @@
             <div class="col-8">
                 @RenderBody()
             </div>
-        </div>
+        </div>*@
+        @RenderBody()
     </div>
 
     <footer class="border-top footer text-muted">

@@ -1,13 +1,57 @@
-﻿@model Note
+﻿@model NoteViewModel
 @*Partial View*@
-<div class="card mt-3">
-    <div class="" style="background-color:@Model.Color">
-        <h6 class="card-title m-2">
-            @Model.Title
-            <button class="btn">
-                <i class="fa-solid fa-ellipsis"></i>
-            </button>
-        </h6>
+<form asp-controller="Home" asp-action="Index" asp-route-id="@Model.Id" method="post">
+    <div id="noteDiv" class="card mt-3">
+
+        <div id="myNav" class="overlay">
+            <div class="w-100 h-25 d-flex text-center clearfix">
+                <div class="flex-fill" style="background-color:#29fbdc">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <div class="flex-fill" style="background-color:#25be7b"></div>
+                <div class="flex-fill" style="background-color:#FF7F50"></div>
+                <div class="flex-fill" style="background-color:#CCCCFF"></div>
+                <div class="flex-fill" style="background-color:#f1c40f"></div>
+            </div>
+            <div class="d-grid">
+                <button type="button" class="btn btn-secondary btn-block">
+                    <i class="fa-solid fa-trash-can"></i>
+                    Delete Note
+                </button>
+            </div>
+            <div class="d-grid">
+                <button type="button" class="btn btn-outline-warning close" onclick="closeNav(this)">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </button>
+            </div>
+        </div>
+
+        <div style="background-color:@Model.Color">
+
+            @*top bar menu*@
+            <div class="clearfix d-flex">
+                <button type="button" class="float-start btn" id="btnNewNote" onclick="newNote()">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+
+                <input type="text" asp-for="Title" class="border border-0 text-center flex-grow-1 form-control"  style="background-color:@Model.Color" />
+
+                <div class="btn-group float-end">
+
+                    @*sumbit form button*@
+                    <button id="postForm" class="btn" type="submit">
+                        <i class="fa-solid fa-check"></i>
+                    </button>
+
+                    <button id="openMenuBtn" class="btn" type="button" onclick="openNav(this)">
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </button>
+                    <button id="closebtn" class="btn" type="button">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <textarea asp-for="Content" class="border border-0" rows="5" id="content"></textarea>
     </div>
-    <p class="card-body">@Model.Content</p>
-</div>
+</form>

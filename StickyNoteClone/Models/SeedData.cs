@@ -75,7 +75,7 @@ namespace StickyNoteClone.Models
                     {
                         Title = "Comic Book Confidential",
                         Content = "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue. Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
-                        Color = "#2576be",
+                        Color = "#FF7F50",
                         StateId = 1,
                         UserId = 1
                     },
@@ -83,7 +83,7 @@ namespace StickyNoteClone.Models
                     {
                         Title = "Wyvern Wonders",
                         Content = "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem.",
-                        Color = "#fbdc29",
+                        Color = "#CCCCFF",
                         IsDisplayed = true,
                         StateId = 2,
                         UserId = 1
@@ -92,8 +92,7 @@ namespace StickyNoteClone.Models
                     {
                         Title = "Enemy at the Gates",
                         Content = "Sed ante. Vivamus tortor. Duis mattis egestas metus..",
-                        IsDisplayed = true,
-                        Color = "#dc29fb",
+                        Color = "#f1c40f ",
                         StateId = 2,
                         UserId = 4
                     });

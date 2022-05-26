@@ -4,8 +4,19 @@
     int count = 0;
     string pholder = "card-body collapse show";
 }
-
+<div class="d-flex flex-column">
+    <button type="button" class="btn btn-info" id="btnNewNote" onclick="newNote()">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Add New Note</strong>
+    </button>
+</div>
 <div id="accordion" class="">
+    <form asp-controller="Home" asp-action="AddNewNote" method="post">
+        <div id="newRow">
+            <input type="hidden" id="total" value="0" />
+            @* <input type="submit" class="btn btn-primary"  value="Post" /> *@
+        </div>
+    </form>
     @foreach (var note in Model ?? Enumerable.Empty<Note>())
     {
 
@@ -17,37 +28,37 @@
             pholder = "card-body collapse";
         }
         <div class="card mt-3" style="box-shadow:3px 3px 3px @note.Color; border-top:solid @note.Color 10px">
-            @* <div class="d-flex">
-                <a class="btn flex-grow-1" data-bs-toggle="collapse" href="#@collapse">
-                @note.Title
-                </a>
-                <span class="float-end">
-                <a href="#" class="btn" data-bs-toggle="popover" tabindex="0" title="Popover title" data-bs-content="Default popover">
-                <i class="fa-solid fa-ellipsis"></i>
-                </a>
-                </span>
-                </div>*@
 
             <div class="card-title btn-group">
                 <a class="btn" data-bs-toggle="collapse" href="#@collapse">
                     @note.Title
                 </a>
                 <div class="">
-                    <a class="btn" data-toggle="tooltip" data-placement="top" title="Tooltip on top" asp-route-id="@note.Id" asp-controller="Home" asp-action="Index">
+                    <a class="btn" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
-                @*  <span class="float-end">
-                    <a href="#" class="btn" data-bs-toggle="popover" tabindex="0" title="Popover title" data-bs-content="Default popover">
-                    <i class="fa-solid fa-ellipsis"></i>
-                    </a>
-                    </span>*@
+
             </div>
 
             <div id="@collapse" class="@pholder" style="border-color:@note.Color" data-bs-parent="#accordion">
                 @note.Content
             </div>
         </div>
-        @*<i class="fa-solid fa-ellipsis"></i>*@
     }
 </div>
+<script>
+        function newNote() {
+            var tt = document.getElementById("total");
+            var rowCount = parseInt(tt.value);
+                 rowCount++;
+                 tt.value=rowCount;
+            var html = '';
+             html += '<div id="inputRow">';
+             html += '<input type="text" name="[' + (rowCount - 1) + '].Name"  />';
+             html += '</div>';
+
+             $('#newRow').append(html);
+             alert(rowCount);
+    }
+</script>
