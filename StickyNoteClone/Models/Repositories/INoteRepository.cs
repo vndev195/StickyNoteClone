@@ -7,5 +7,6 @@ namespace StickyNoteClone.Models.Repositories
         public Note GetById(int id);
         public IEnumerable<NoteViewModel> GetDisplayedNotes();
         public void UpdateNote(Note note);
+        public void DeleteNote(Note note);
     }
 }

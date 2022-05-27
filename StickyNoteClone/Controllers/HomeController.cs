@@ -37,7 +37,36 @@ namespace StickyNoteClone.Controllers
 
                 repo.UpdateNote(findNote);
             }
-            return RedirectToAction();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult ChangeVisibility(int id, bool isDisplayed)
+        {
+            Note findNote = repo.GetById(id);
+            if (findNote != null)
+            {
+                if (isDisplayed == false)
+                {
+                    findNote.IsDisplayed = true;
+                    repo.UpdateNote(findNote);
+                }
+                else if(isDisplayed == true)
+                {
+                    findNote.IsDisplayed = false;
+                    repo.UpdateNote(findNote);
+                }
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult DeleteNote(int id)
+        {
+            Note findNote = repo.GetById(id);
+            if (findNote != null)
+            {
+                repo.DeleteNote(findNote);
+            }
+            return RedirectToAction(nameof(Index));
         }
         // public IActionResult AddNewNote()
         // {

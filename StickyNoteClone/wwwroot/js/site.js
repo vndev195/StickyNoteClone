@@ -33,8 +33,8 @@ function newNote() {
 function openNav(btn) {
     btn.blur();
     var elm = btn.closest(".card");
-    elm.children[0].style.height = "100%";
-    elm.fucos();
+    elm.children[0].style.height = "auto"
+    elm.focus();
 }
 
 function closeNav(nav) {

@@ -1,13 +1,4 @@
-﻿@*@model IEnumerable<Note>
-    @{
-    IEnumerable<Note> notes = ViewData["Notes"] as IEnumerable<Note>;
-    IEnumerable<Note> displayedNotes = ViewData["DisplayedNotes"] as IEnumerable<Note>;
-    int count = 0;
-    string pholder = "card-body collapse show";
-    }*@
-
-
-@model IEnumerable<NoteViewModel>
+﻿@model IEnumerable<NoteViewModel>
 @{
     IEnumerable<NoteViewModel> notes = ViewData["Notes"] as IEnumerable<NoteViewModel>;
     IEnumerable<NoteViewModel> displayedNotes = ViewData["DisplayedNotes"] as IEnumerable<NoteViewModel>;
@@ -36,17 +27,23 @@
                             @note.Title
                         </a>
                         <div class="">
-                            <a class="btn" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
+                            @{
+                                if (@note.IsDisplayed == true)
+                                {
+                                    
+                                }
+                                else
+                                {
+                                    <a class="btn" asp-action="ChangeVisibility" asp-route-id="@note.Id" asp-route-isDisplayed="@note.IsDisplayed" data-toggle="tooltip" data-placement="top" title="Show Note">
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
+                                }
+                            }
+
                         </div>
-
                     </div>
-
                     <div id="@collapse" class="@pholder" style="border-color:@note.Color" data-bs-parent="#accordion">
-                        <p>
-                            @note.Content
-                        </p>
+                        <textarea class="form-control border border-0 lead" readonly rows="4">@note.Content</textarea>
                     </div>
                 </div>
             }
@@ -59,7 +56,7 @@
             <form asp-controller="Home" asp-action="AddNewNote" method="post">
                 <div id="newRow">
                     <input type="hidden" id="total" value="0" />
-                     @*<input type="submit" class="btn btn-primary"  value="Post" /> *@
+                    @*<input type="submit" class="btn btn-primary"  value="Post" /> *@
                     @* <div class="card">
                         <div class="form-floating">
                         <input type="text" class="form-control border border-0" id="title" placeholder="Enter title" name="title">
