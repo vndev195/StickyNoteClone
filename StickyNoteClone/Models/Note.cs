@@ -8,7 +8,7 @@ namespace StickyNoteClone.Models
         [Required]
         public string Content { get; set; } = String.Empty;
         [MaxLength(10)]
-        public string Color { get; set; } = "#29fbdc";
+        public string Color { get; set; } = "#00FFFF";
         public bool IsDisplayed { get; set; }
         public int UserId { get; set; }
         public User UserNavigation { get; set; }

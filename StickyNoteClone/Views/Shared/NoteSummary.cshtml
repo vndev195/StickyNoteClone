@@ -1,39 +1,30 @@
 ﻿@model NoteViewModel
 @*Partial View*@
 <form asp-controller="Home" asp-action="Index" asp-route-id="@Model.Id" method="post">
-    <div id="noteDiv" class="card mt-3">
+    <div id="noteDiv" class="card mt-3 @Model.Id">
 
         @*menu overlay for each item*@
         <div id="myNav" class="overlay">
 
             @*Change note's color*@
-            <div class="w-100 h-25 d-flex text-center clearfix">
-                <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off">
-                <label class="btn flex-fill" style="background-color:#29fbdc" for="option1">
-                    <i class="fa-solid fa-check"></i>
-                </label>
-
-                <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                <label class="btn flex-fill" style="background-color:#25be7b" for="option2">
-                    <i class="fa-solid fa-check"></i>
-                </label>
-
-                 <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
-                <label class="btn flex-fill" style="background-color:#FF7F50" for="option3">
-                    <i class="fa-solid fa-check"></i>
-                </label>
-
-                 <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
-                <label class="btn flex-fill" style="background-color:#CCCCFF" for="option4">
-                    <i class="fa-solid fa-check"></i>
-                </label>
-
-                 <input type="radio" class="btn-check" name="options" id="option5" autocomplete="off">
-                <label class="btn flex-fill" style="background-color:#f1c40f" for="option5">
-                    <i class="fa-solid fa-check"></i>
-                </label>
+            <div class="d-flex text-center">
+                <div class="btn p-3 flex-fill Aqua" id="Aqua" onclick="ColorChange(this,@Model.Id)">
+                    @*00FFFF*@
+                </div>
+                <div class="btn p-3 flex-fill MediumSeaGreen" id="MediumSeaGreen" onclick="ColorChange(this,@Model.Id)">
+                    @*3CB371*@
+                </div>
+                <div class="btn p-3 flex-fill LightCoral" id="LightCoral" onclick="ColorChange(this,@Model.Id)">
+                    @*F08080*@
+                </div>
+                <div class="btn p-3 flex-fill Lavender" id="Lavender" onclick="ColorChange(this,@Model.Id)">
+                    @*E6E6FA*@
+                </div>
+                <div class="btn p-3 flex-fill Gold" id="Gold" onclick="ColorChange(this,@Model.Id)">
+                    @*FFD700*@
+                </div>
             </div>
-        
+
             @*Delete Note*@
             <div class="d-grid">
                 <a asp-action="DeleteNote" asp-route-id="@Model.Id" class="btn btn-secondary btn-block">
@@ -50,7 +41,7 @@
             </div>
         </div>
 
-        <div style="background-color:@Model.Color">
+        <div id="@Model.Id" style="background:@Model.Color">
 
             @*top bar menu*@
             <div class="clearfix d-flex">
@@ -58,7 +49,7 @@
                     <i class="fa-solid fa-plus"></i>
                 </button>
 
-                <input type="text" asp-for="Title" class="border border-0 text-center flex-grow-1 form-control" style="background-color:@Model.Color" />
+                <input type="text" asp-for="Title" class="border border-0 text-center flex-grow-1 form-control" style="background:@Model.Color" />
 
                 <div class="btn-group float-end">
 

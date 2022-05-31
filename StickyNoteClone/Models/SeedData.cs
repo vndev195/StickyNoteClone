@@ -67,7 +67,7 @@ namespace StickyNoteClone.Models
                     new Note
                     {
                         Content = "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
-                        Color = "#25be7b",
+                        Color = "#3CB371",
                         StateId = 1,
                         UserId = 1
                     },
@@ -75,7 +75,7 @@ namespace StickyNoteClone.Models
                     {
                         Title = "Comic Book Confidential",
                         Content = "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue. Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
-                        Color = "#FF7F50",
+                        Color = "#F08080",
                         StateId = 1,
                         UserId = 1
                     },
@@ -83,7 +83,7 @@ namespace StickyNoteClone.Models
                     {
                         Title = "Wyvern Wonders",
                         Content = "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem.",
-                        Color = "#CCCCFF",
+                        Color = "#E6E6FA",
                         IsDisplayed = true,
                         StateId = 2,
                         UserId = 1
@@ -92,7 +92,7 @@ namespace StickyNoteClone.Models
                     {
                         Title = "Enemy at the Gates",
                         Content = "Sed ante. Vivamus tortor. Duis mattis egestas metus..",
-                        Color = "#f1c40f ",
+                        Color = "#FFD700 ",
                         StateId = 2,
                         UserId = 4
                     });

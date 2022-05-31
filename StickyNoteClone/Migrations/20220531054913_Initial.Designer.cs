@@ -12,7 +12,7 @@ using StickyNoteClone.Models;
 namespace StickyNoteClone.Migrations
 {
     [DbContext(typeof(StickyNoteDbContext))]
-    [Migration("20220518071831_Initial")]
+    [Migration("20220531054913_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

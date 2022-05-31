@@ -41,3 +41,29 @@ function closeNav(nav) {
     nav.closest(".card").children[0].style.height = "0";
 }
 
+function ColorChange(d, id) {
+    var main = document.getElementById(id);
+    var title = main.children[0].children[1];
+
+    let i = document.createElement("i");
+    d.appendChild(i);
+
+    if (d.id == "Aqua") {
+        title.style.background = main.style.background = "#00FFFF";
+        //i.classList.add("fa-solid");
+        //i.classList.add("fa-check");
+    }
+    else if (d.id == "MediumSeaGreen") {
+        title.style.background = main.style.background = "#3CB371";
+    }
+    else if (d.id == "LightCoral") {
+        title.style.background = main.style.background = "#F08080";
+    }
+    else if (d.id == "Lavender") {
+        title.style.background = main.style.background = "#E6E6FA";
+    }
+    else if (d.id == "Gold") {
+        title.style.background = main.style.background = "#FFD700";
+    }
+    d.closest(".card").children[0].style.height = "0";
+}
