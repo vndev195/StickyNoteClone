@@ -34,7 +34,7 @@ namespace StickyNoteClone.Controllers
             {
                 findNote.Title = note.Title;
                 findNote.Content = note.Content;
-
+                findNote.Color = note.Color;
                 repo.UpdateNote(findNote);
             }
             return RedirectToAction(nameof(Index));

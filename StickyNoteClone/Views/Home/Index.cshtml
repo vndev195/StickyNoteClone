@@ -20,7 +20,7 @@
                 {
                     pholder = "card-body collapse";
                 }
-                <div class="card mt-3" style="box-shadow:3px 3px 3px @note.Color; border-top:solid @note.Color 10px">
+                <div class="card mt-3" style="box-shadow:1px 1px 1px @note.Color; border-top:solid @note.Color 10px">
 
                     <div class="card-title btn-group">
                         <a class="btn" data-bs-toggle="collapse" href="#@collapse">
@@ -30,7 +30,7 @@
                             @{
                                 if (@note.IsDisplayed == true)
                                 {
-                                    
+
                                 }
                                 else
                                 {
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div id="@collapse" class="@pholder" style="border-color:@note.Color" data-bs-parent="#accordion">
-                        <textarea class="form-control border border-0 lead" readonly rows="4">@note.Content</textarea>
+                        <textarea class="form-control border border-0 lead" style="resize:none" readonly rows="4">@note.Content</textarea>
                     </div>
                 </div>
             }
@@ -56,7 +56,6 @@
             <form asp-controller="Home" asp-action="AddNewNote" method="post">
                 <div id="newRow">
                     <input type="hidden" id="total" value="0" />
-                    @*<input type="submit" class="btn btn-primary"  value="Post" /> *@
                     @* <div class="card">
                         <div class="form-floating">
                         <input type="text" class="form-control border border-0" id="title" placeholder="Enter title" name="title">
@@ -71,6 +70,31 @@
 
                         </div>
                         </div>*@
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog modal-fullscreen-sm-down modal-dialog-centered">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Modal Heading</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Modal body..
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                    </div>
                 </div>
             </form>
             @foreach (var note in displayedNotes ?? Enumerable.Empty<NoteViewModel>())

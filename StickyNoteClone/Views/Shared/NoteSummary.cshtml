@@ -45,12 +45,13 @@
 
             @*top bar menu*@
             <div class="clearfix d-flex">
-                <button type="button" class="float-start btn" id="btnNewNote" onclick="newNote()">
+                @*<button type="button" class="float-start btn" id="btnNewNote" onclick="newNote()">*@
+                <button type="button" class="float-start btn" id="btnNewNote" data-bs-toggle="modal" data-bs-target="#myModal">
                     <i class="fa-solid fa-plus"></i>
                 </button>
 
                 <input type="text" asp-for="Title" class="border border-0 text-center flex-grow-1 form-control" style="background:@Model.Color" />
-
+                <input type="hidden" asp-for="Color" />
                 <div class="btn-group float-end">
 
                     @*sumbit form button*@
