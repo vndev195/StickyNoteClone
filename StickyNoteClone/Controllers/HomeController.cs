@@ -50,7 +50,7 @@ namespace StickyNoteClone.Controllers
                     findNote.IsDisplayed = true;
                     repo.UpdateNote(findNote);
                 }
-                else if(isDisplayed == true)
+                else if (isDisplayed == true)
                 {
                     findNote.IsDisplayed = false;
                     repo.UpdateNote(findNote);
@@ -68,10 +68,27 @@ namespace StickyNoteClone.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-        // public IActionResult AddNewNote()
-        // {
 
-        // }
+        [HttpPost]
+        public IActionResult AddNewNote(CreateNoteModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+#warning testing only
+            Note note = new Note()
+            {
+                Title = model.Title,
+                Content = model.Content,
+                Color = model.Color,
+                IsDisplayed = model.IsDisplayed,
+                StateId = model.StateId,
+                UserId = 1 
+            };
+            repo.AddNote(note);
+            return RedirectToAction(nameof(Index));
+        }
         public IActionResult Privacy()
         {
             return View();

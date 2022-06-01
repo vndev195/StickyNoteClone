@@ -16,7 +16,8 @@
     overflow-x: hidden;
     transition: 0.5s;
     color: white;
-    cursor: pointer
+    cursor: pointer;
+    opacity: 90%;
 }
 
 .Aqua {
@@ -38,3 +39,84 @@
 .Gold {
     background: #FFD700;
 }
+
+.custom-radios {
+    background-color: floralwhite;
+}
+
+    .custom-radios input[type="radio"] {
+        display: none;
+    }
+
+        .custom-radios input[type="radio"] + label {
+            color: #333;
+            font-size: 18.5px;
+        }
+
+            .custom-radios input[type="radio"] + label span {
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                margin: 10px 25px 10px 0;
+                vertical-align: middle;
+                cursor: pointer;
+                border-radius: 50%;
+                border: 2px solid #FFFFFF;
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+                background-repeat: no-repeat;
+                background-position: center;
+                text-align: center;
+            }
+
+                .custom-radios input[type="radio"] + label span i {
+                    opacity: 0;
+                    transition: all 0.3s ease;
+                }
+
+    .custom-radios #color-1 + label span {
+        background-color: #00FFFF;
+    }
+
+    .custom-radios #color-2 + label span {
+        background-color: #3CB371;
+    }
+
+    .custom-radios #color-3 + label span {
+        background-color: #F08080;
+    }
+
+    .custom-radios #color-4 + label span {
+        background-color: #E6E6FA;
+    }
+
+    .custom-radios #color-5 + label span {
+        background-color: #FFD700;
+    }
+
+    .custom-radios input[type="radio"]:checked + label span i {
+        opacity: 1;
+    }
+
+.custom-rad {
+    background-color: dimgray;
+}
+
+    .custom-rad div {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        margin: 10px 25px 10px 0;
+        vertical-align: middle;
+        cursor: pointer;
+        border-radius: 50%;
+        border: 2px solid #FFFFFF;
+        background-repeat: no-repeat;
+        background-position: center;
+        text-align: center;
+        font-size: 8px;
+        color: #333;
+    }
+
+        .custom-rad div:hover {
+            border: 2px solid black;
+        }

@@ -41,13 +41,10 @@ function closeNav(nav) {
     nav.closest(".card").children[0].style.height = "0";
 }
 
-function ColorChange(d, id) {
+function ColorChanged(d, id) {
     var main = document.getElementById(id);
     var title = main.children[0].children[1];
     var color = main.children[0].children[2];
-    let i = document.createElement("i");
-    d.appendChild(i);
-
     if (d.id == "Aqua") {
         title.style.background = main.style.background = "#00FFFF";
         color.value = "#00FFFF";
@@ -71,4 +68,11 @@ function ColorChange(d, id) {
         color.value = "#FFD700";
     }
     d.closest(".card").children[0].style.height = "0";
+}
+
+function OnCheck(rad) {
+    var title = document.getElementById("modeltitle");
+    var color = document.getElementById("modelcontent").children[1];
+    title.style.background = rad.value;
+    color.value = rad.value;
 }

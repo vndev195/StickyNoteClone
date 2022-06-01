@@ -1,27 +1,22 @@
 ﻿@model NoteViewModel
 @*Partial View*@
-<form asp-controller="Home" asp-action="Index" asp-route-id="@Model.Id" method="post">
-    <div id="noteDiv" class="card mt-3 @Model.Id">
+<form asp-controller="Home" asp-action="Index" asp-route-id="@Model.Id" method="post" class="was-validated">
+    <div id="noteDiv" class="card mt-3">
 
         @*menu overlay for each item*@
         <div id="myNav" class="overlay">
 
             @*Change note's color*@
-            <div class="d-flex text-center">
-                <div class="btn p-3 flex-fill Aqua" id="Aqua" onclick="ColorChange(this,@Model.Id)">
-                    @*00FFFF*@
+            <div class="text-center custom-rad">
+                <div class="p-2 Aqua" id="Aqua" onclick="ColorChanged(this,@Model.Id)">
                 </div>
-                <div class="btn p-3 flex-fill MediumSeaGreen" id="MediumSeaGreen" onclick="ColorChange(this,@Model.Id)">
-                    @*3CB371*@
+                <div class="p-2 MediumSeaGreen" id="MediumSeaGreen" onclick="ColorChanged(this,@Model.Id)">
                 </div>
-                <div class="btn p-3 flex-fill LightCoral" id="LightCoral" onclick="ColorChange(this,@Model.Id)">
-                    @*F08080*@
+                <div class="p-2 LightCoral" id="LightCoral" onclick="ColorChanged(this,@Model.Id)">
                 </div>
-                <div class="btn p-3 flex-fill Lavender" id="Lavender" onclick="ColorChange(this,@Model.Id)">
-                    @*E6E6FA*@
+                <div class="p-2 Lavender" id="Lavender" onclick="ColorChanged(this,@Model.Id)">
                 </div>
-                <div class="btn p-3 flex-fill Gold" id="Gold" onclick="ColorChange(this,@Model.Id)">
-                    @*FFD700*@
+                <div class="p-2 Gold" id="Gold" onclick="ColorChanged(this,@Model.Id)">
                 </div>
             </div>
 
@@ -50,17 +45,17 @@
                     <i class="fa-solid fa-plus"></i>
                 </button>
 
-                <input type="text" asp-for="Title" class="border border-0 text-center flex-grow-1 form-control" style="background:@Model.Color" />
+                <input type="text" asp-for="Title" class="border border-0 text-center flex-grow-1 form-control" required style="background:@Model.Color" />
                 <input type="hidden" asp-for="Color" />
                 <div class="btn-group float-end">
 
                     @*sumbit form button*@
-                    <button id="postForm" class="btn" type="submit">
+                    <button id="postForm" class="btn" type="submit" data-bs-toggle="tooltip" title="Save To Database">
                         <i class="fa-solid fa-check"></i>
                     </button>
 
                     @*open menu*@
-                    <button id="openMenuBtn" class="btn" type="button" onclick="openNav(this)">
+                    <button id="openMenuBtn" class="btn" type="button" onclick="openNav(this)" data-bs-toggle="tooltip" title="Open Menu">
                         <i class="fa-solid fa-ellipsis"></i>
                     </button>
 
@@ -76,6 +71,6 @@
                 </div>
             </div>
         </div>
-        <textarea asp-for="Content" class="border border-0" rows="5" id="content">@Model.IsDisplayed.ToString()</textarea>
+        <textarea asp-for="Content" class="border border-0 form-control" rows="5" required>@Model.IsDisplayed.ToString()</textarea>
     </div>
 </form>

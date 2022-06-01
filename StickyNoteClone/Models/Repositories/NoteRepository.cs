@@ -39,5 +39,11 @@ namespace StickyNoteClone.Models.Repositories
             _context.Notes.Remove(note);
             _context.SaveChanges();
         }
+
+        public void AddNote(Note note)
+        {
+            _context.Notes.Add(note);
+            _context.SaveChanges();
+        }
     }
 }
