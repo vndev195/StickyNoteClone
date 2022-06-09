@@ -13,8 +13,9 @@ namespace StickyNoteClone.Components
         }
         public IViewComponentResult Invoke()
         {
-            
-            return View(noteRepository.Notes());
+
+            //return View(noteRepository.Notes());
+            return View();
         }
     }
 }

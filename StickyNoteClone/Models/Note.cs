@@ -10,7 +10,7 @@ namespace StickyNoteClone.Models
         [MaxLength(10)]
         public string Color { get; set; } = "#00FFFF";
         public bool IsDisplayed { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public User UserNavigation { get; set; }
         public int StateId { get; set; }
         public State StateNavigation { get; set; }

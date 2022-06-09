@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using StickyNoteClone.Factory;
 using StickyNoteClone.Models;
 using StickyNoteClone.Models.Repositories;
 
@@ -15,6 +17,16 @@ builder.Services.AddDbContext<StickyNoteDbContext>(opts =>
     opts.UseSqlServer(builder.Configuration["ConnectionStrings:StickyNoteConnection"]);
 });
 
+builder.Services.AddIdentity<User, IdentityRole>(opt =>
+ {
+     opt.Password.RequiredLength = 7;
+     opt.Password.RequireDigit = true;
+     opt.Password.RequireNonAlphanumeric = false;
+     opt.User.RequireUniqueEmail = true;
+ }).AddEntityFrameworkStores<StickyNoteDbContext>();
+
+//register CustomClaimsFactory class in the service collection
+builder.Services.AddScoped<IUserClaimsPrincipalFactory<User>, CustomClaimsFactory>();
 builder.Services.AddScoped<INoteRepository, NoteRepository>();
 
 builder.Services.AddRazorPages();
@@ -32,7 +44,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-//app.UseAuthorization();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",

@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using StickyNoteClone.Configurations;
 
 namespace StickyNoteClone.Models
 {
-    public class StickyNoteDbContext : DbContext
+    public class StickyNoteDbContext : IdentityDbContext<User>
     {
-        public DbSet<User> Users { get; set; }
         public DbSet<Note> Notes { get; set; }
         public DbSet<State> State { get; set; }
 
@@ -19,6 +20,8 @@ namespace StickyNoteClone.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Note>(e =>
             {
                 e.HasOne(c => c.UserNavigation)
@@ -39,6 +42,8 @@ namespace StickyNoteClone.Models
             {
                 e.Property(p => p.IsDisplayed).HasDefaultValue(false);
             });
+
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
         }
     }
 }

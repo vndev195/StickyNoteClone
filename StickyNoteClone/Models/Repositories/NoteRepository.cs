@@ -11,15 +11,15 @@ namespace StickyNoteClone.Models.Repositories
             _context = context;
             _mapper = mapper;
         }
-        public IEnumerable<NoteViewModel> Notes()
+        public IEnumerable<NoteViewModel> Notes(string userId)
         {
 
-            return _mapper.Map<IEnumerable<NoteViewModel>>(_context.Notes);
+            return _mapper.Map<IEnumerable<NoteViewModel>>(_context.Notes.Where(x => x.UserId == userId));
         }
 
-        public IEnumerable<NoteViewModel> GetDisplayedNotes()
+        public IEnumerable<NoteViewModel> GetDisplayedNotes(string userId)
         {
-            return _mapper.Map<IEnumerable<NoteViewModel>>(_context.Notes.Where(x => x.IsDisplayed == true));
+            return _mapper.Map<IEnumerable<NoteViewModel>>(_context.Notes.Where(x => x.IsDisplayed == true && x.UserId == userId));
             //return _context.Notes.Where(x => x.IsDisplayed == true);
         }
 

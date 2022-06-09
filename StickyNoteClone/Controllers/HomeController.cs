@@ -4,6 +4,10 @@ using System.Diagnostics;
 using StickyNoteClone.Models.Repositories;
 using AutoMapper;
 using StickyNoteClone.Models.DTO;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
+
 namespace StickyNoteClone.Controllers
 {
     public class HomeController : Controller
@@ -11,17 +15,21 @@ namespace StickyNoteClone.Controllers
         private readonly ILogger<HomeController> _logger;
         private INoteRepository repo;
         private IMapper _mapper;
-        public HomeController(ILogger<HomeController> logger, INoteRepository noteRepository, IMapper mapper)
+        private UserManager<User> _userManager;
+        public HomeController(ILogger<HomeController> logger, INoteRepository noteRepository, IMapper mapper, UserManager<User> userManager)
         {
             _logger = logger;
             repo = noteRepository;
             _mapper = mapper;
+            _userManager = userManager;
         }
 
+        [Authorize]
+        [HttpGet]
         public IActionResult Index()
         {
-            ViewData["Notes"] = repo.Notes();
-            ViewData["DisplayedNotes"] = repo.GetDisplayedNotes();
+            ViewData["Notes"] = repo.Notes(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ViewData["DisplayedNotes"] = repo.GetDisplayedNotes(User.FindFirst(ClaimTypes.NameIdentifier).Value);
             return View();
         }
 
@@ -74,19 +82,13 @@ namespace StickyNoteClone.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return View();
             }
-#warning testing only
-            Note note = new Note()
-            {
-                Title = model.Title,
-                Content = model.Content,
-                Color = model.Color,
-                IsDisplayed = model.IsDisplayed,
-                StateId = model.StateId,
-                UserId = 1 
-            };
+
+            Note note = _mapper.Map<Note>(model);
+            note.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             repo.AddNote(note);
+
             return RedirectToAction(nameof(Index));
         }
         public IActionResult Privacy()

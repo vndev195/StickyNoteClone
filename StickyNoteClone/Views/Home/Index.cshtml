@@ -7,6 +7,11 @@
 }
 <div class="row m-1">
     <div class="col-4 card">
+        <div class="d-grid mt-2">
+            <button class="btn-primary btn-info" type="button" data-bs-toggle="modal" data-bs-target="#myModal">
+                <i class="fa-solid fa-plus"></i> New Note
+            </button>
+        </div>
 
         <div id="accordion" class="">
 
@@ -20,7 +25,7 @@
                 {
                     pholder = "card-body collapse";
                 }
-                <div class="card mt-3" style="box-shadow:1px 1px 1px @note.Color; border-top:solid @note.Color 10px">
+                <div class="card mt-3 mb-3" style="box-shadow:1px 1px 1px @note.Color; border-top:solid @note.Color 10px">
 
                     <div class="card-title btn-group">
                         <a class="btn" data-bs-toggle="collapse" href="#@collapse">
@@ -137,3 +142,11 @@
         </div>
     </div>
 </div>
+
+<h2>Claim details</h2>
+<ul>
+    @foreach (var claim in User.Claims)
+    {
+        <li><strong>@claim.Type</strong>: @claim.Value</li>
+    }
+</ul>

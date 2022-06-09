@@ -10,6 +10,7 @@ namespace StickyNoteClone.Models.DTO
             //Source to Destination
             CreateMap<NoteViewModel, Note>();
             CreateMap<Note, NoteViewModel>();
+            CreateMap<CreateNoteModel, Note>();
         }
     }
 }

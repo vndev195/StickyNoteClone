@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StickyNoteClone.Models;
 
@@ -11,9 +12,10 @@ using StickyNoteClone.Models;
 namespace StickyNoteClone.Migrations
 {
     [DbContext(typeof(StickyNoteDbContext))]
-    partial class StickyNoteDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220607090756_creatingIdentity")]
+    partial class creatingIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,20 +49,6 @@ namespace StickyNoteClone.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "7b86820c-40b4-4e7f-b709-8345c351b637",
-                            ConcurrencyStamp = "26978683-31a1-4d15-bf88-78e2a2a35f28",
-                            Name = "Administrator"
-                        },
-                        new
-                        {
-                            Id = "1b84e23f-8789-49cf-a7eb-09fe477cbbc0",
-                            ConcurrencyStamp = "479b1f98-8bd8-44fa-978e-6c3d19f4d34e",
-                            Name = "Basic"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
