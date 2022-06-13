@@ -47,7 +47,8 @@ namespace StickyNoteClone.Controllers
                 return View(model);
             }
 
-            //await _userManager.AddToRoleAsync(user, "Basic");
+            await _userManager.AddToRoleAsync(user, "Basic");
+
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
@@ -96,6 +97,12 @@ namespace StickyNoteClone.Controllers
             }
             else
                 return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
+
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
         }
     }
 }

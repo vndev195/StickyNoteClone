@@ -1,0 +1,8 @@
+﻿body {
+}
+#LoginBox {
+    border: 1px solid black;
+    padding: 2rem;
+    box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
+}
+  

@@ -11,11 +11,13 @@ namespace StickyNoteClone.Configurations
             builder.HasData(
                 new IdentityRole
                 {
-                    Name = "Administrator",
+                    Name = "Basic",
+                    NormalizedName = "BASIC"
                 },
                 new IdentityRole
                 {
-                    Name = "Basic",
+                    Name = "Administrator",
+                    NormalizedName = "ADMINISTRATOR"
                 });
         }
     }

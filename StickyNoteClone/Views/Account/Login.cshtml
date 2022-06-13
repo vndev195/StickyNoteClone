@@ -1,21 +1,22 @@
 ﻿@model StickyNoteClone.Models.DTO.LoginModel
-<div class="bg-secondary text-center text-white p-2">
-    <h4>Log In</h4>
-</div>
-<div class="row container mx-auto">
-    <div class="col-sm-8">
+
+<div class="container w-50">
+    <div class="bg-secondary text-center text-white p-2">
+        <h4>Sign In</h4>
+    </div>
+    <div id="LoginBox" class="">
         <form method="post" asp-action="Login" asp-route-returnUrl="@ViewData["ReturnUrl"]">
             <div class="m-1 text-danger" asp-validation-summary="ModelOnly"></div>
 
             @*<input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />*@
             <div class="mb-3 mt-3 form-group">
                 <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
+                <input asp-for="Email" class="form-control" placeholder="Email" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="mb-3 mt-3 form-group">
                 <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password" class="form-control" placeholder="Password" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="mb-3 mt-3 form-group form-check">
@@ -23,7 +24,10 @@
                     <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
                 </label>
             </div>
-            <button class="btn btn-primary mt-2" type="submit">Log In</button>
+            <div class="clearfix">
+                <a class=" mt-2 float-start" asp-action="ForgotPassword" asp-controller="Account">Forgot Password?</a>
+                <button class="btn btn-primary mt-2 float-end" type="submit">Log In</button>
+            </div>
         </form>
     </div>
 </div>

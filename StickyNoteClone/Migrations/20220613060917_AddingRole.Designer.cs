@@ -12,8 +12,8 @@ using StickyNoteClone.Models;
 namespace StickyNoteClone.Migrations
 {
     [DbContext(typeof(StickyNoteDbContext))]
-    [Migration("20220607091551_InsertRoles")]
-    partial class InsertRoles
+    [Migration("20220613060917_AddingRole")]
+    partial class AddingRole
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,15 +53,17 @@ namespace StickyNoteClone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7b86820c-40b4-4e7f-b709-8345c351b637",
-                            ConcurrencyStamp = "26978683-31a1-4d15-bf88-78e2a2a35f28",
-                            Name = "Administrator"
+                            Id = "c414e358-b5aa-4762-a003-e9044e948903",
+                            ConcurrencyStamp = "09afcad7-79b8-48bb-8c3a-43a620f1f8a8",
+                            Name = "Basic",
+                            NormalizedName = "BASIC"
                         },
                         new
                         {
-                            Id = "1b84e23f-8789-49cf-a7eb-09fe477cbbc0",
-                            ConcurrencyStamp = "479b1f98-8bd8-44fa-978e-6c3d19f4d34e",
-                            Name = "Basic"
+                            Id = "576f6397-8b7d-40ae-8ce4-cba9f275c6ee",
+                            ConcurrencyStamp = "ee2cdaad-c05f-4259-965f-66eadb7e2c62",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
                         });
                 });
 
