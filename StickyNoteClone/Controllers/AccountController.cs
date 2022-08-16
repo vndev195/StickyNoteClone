@@ -18,6 +18,7 @@ namespace StickyNoteClone.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
+        #region Register User
         [HttpGet]
         public IActionResult Register()
         {
@@ -51,7 +52,9 @@ namespace StickyNoteClone.Controllers
 
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
+#endregion
 
+        #region SignIn
         [HttpGet]
         public IActionResult Login(string returnUrl = null)
         {
@@ -82,6 +85,8 @@ namespace StickyNoteClone.Controllers
                 return View();
             }
         }
+
+#endregion
 
         public async Task<IActionResult> LogoutAsync()
         {

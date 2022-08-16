@@ -213,7 +213,7 @@ namespace StickyNoteClone.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Notes");
+                    b.ToTable("Notes", (string)null);
                 });
 
             modelBuilder.Entity("StickyNoteClone.Models.State", b =>
@@ -233,7 +233,7 @@ namespace StickyNoteClone.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("State");
+                    b.ToTable("State", (string)null);
                 });
 
             modelBuilder.Entity("StickyNoteClone.Models.User", b =>
